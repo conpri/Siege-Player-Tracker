@@ -36,6 +36,7 @@ if not cap.isOpened():
 
 # Get video properties to potentially save the output video
 fps = cap.get(cv2.CAP_PROP_FPS)
+
 width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 #width = 2560
@@ -63,7 +64,7 @@ while cap.isOpened():
 
     # The 'ultralytics' library results object has a built-in plot method
     # which draws the bounding boxes and labels directly onto the frame
-    if (results[0].boxes.conf > .45).any() or frameCounter < 150:
+    if (results[0].boxes.conf > .45).any() or frameCounter < fps*5:
         frameCounter += 1
         annotated_frame = results[0].plot()
         if (results[0].boxes.conf > .45).any():
@@ -80,7 +81,6 @@ while cap.isOpened():
     # Break the loop if 'q' is pressed
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-
 # Step 6: Release resources
 cap.release()
 # Optional: 
