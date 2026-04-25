@@ -1,6 +1,6 @@
 # Siege-Player-Tracker
 ## Description
-A computer vision model to track Rainbow 6 Siege operators
+A computer vision model to track Rainbow 6 Siege operators. Target Audience for current design is analyzing film, whether an operator swung and you didnt see it at the time or it was just almost unnoticable based off the angle they were holding.
 
 ## Techstack
 ### Software & Tools
