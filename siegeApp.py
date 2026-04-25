@@ -1,15 +1,9 @@
 import cv2
 from ultralytics import YOLO
-import torch
 from tkinter import Tk, filedialog
 import os
 from moviepy import VideoFileClip
 
-
-print("HIP available:", torch.cuda.is_available())
-print("Device count:", torch.cuda.device_count())
-print("HIP version:", torch.version.hip)
-print("Device name:", torch.cuda.get_device_name(0) if torch.cuda.is_available() else "None")
 
 frameCounter = 150
 
@@ -20,8 +14,7 @@ cv2.destroyAllWindows()
 script_dir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(script_dir)
 
-#modelPath = "/mnt/c/Users/conpr.CONNORSPC/Documents/Siege/model3/Content/train_copy/weights/best.pt" #WSL version
-modelPath= "model3\\content\\train_copy\\weights\\best.pt" # Windows Version
+modelPath= "best.pt"
 model = YOLO(modelPath)
 
 # Step 4: Load the video
@@ -46,8 +39,7 @@ height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
 
 
-#vidURL = "/mnt/c/Users/conpr.CONNORSPC/Documents/Siege/output_video_with_boxes.mp4" #WSL version
-vidURL = "output_video_with_boxes.mp4" #Windows version
+vidURL = "output_video_with_boxes.mp4"
 out = cv2.VideoWriter(vidURL, fourcc, fps, (width, height))
 
 # Step 5: Process video frame by frame and detect objects
